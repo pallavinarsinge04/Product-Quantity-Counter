@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Quantity Counter</title>
+    <style>
+        .product-card
+        {
+            width: 400px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        .img-watch
+        {
+            height: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+        .btn-buy-now
+        {
+            display: block;
+            margin: 10px auto;
+            font-size:20px ;
+            padding: 5px 20px;
+            border-radius: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .btn-quantity
+        {
+            height: 50px;
+            margin-top: 40px;
+            cursor: pointer;
+        }
+        .qun-btn-container
+        {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .quantity-text
+        {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="main-product.jpg" class="img-watch"/>
+
+        <div class="qun-btn-container">
+            <img src="minus.png" class="btn-quantity" onclick="handleQuantity('decrement')"/>
+           <span class="quantity-text" id="quantity-text">1</span> 
+            <img src="plus.png" class="btn-quantity" onclick="handleQuantity('increment')"/>
+        </div>
+        <button class="btn-buy-now">Buy Now</button>
+
+    </div>
+    <script>
+        function handleQuantity(action){
+        const quantityElement = document.getElementById("quantity-text")
+        let quantity = parseInt(quantityElement.innerText);
+        if(quantity==1 && action=='decrement')
+    {
+        alert('Quantity can`t be less than 1')
+
+    }else if(quantity==5 && action=='increment')
+    {
+        alert('Quantity can`t be more than 5')
+    }
+
+        quantityElement.innerText = action=='increment' ? ++quantity:--quantity
+        }
+    </script>
+</body>
+</html>
